@@ -1,4 +1,4 @@
-# WiCS Website
+# WiCS Website 
 
 Static website mockup for Women in Computer Science at ASU.
 
