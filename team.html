@@ -60,7 +60,7 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 .team-inner{position:relative;z-index:2;width:min(1280px,100%);margin:0 auto}
 .team-hero{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(380px,1fr);gap:32px;align-items:end;margin-bottom:54px;padding-bottom:34px;border-bottom:1px solid rgba(247,242,255,.13)}
 .section-label{font-family:var(--mono);font-size:.72rem;color:var(--purple-3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
-.team-title{font-family:var(--sans);font-size:clamp(2.5rem,4.3vw,4.25rem);line-height:.9;letter-spacing:-.055em;margin-top:8px;font-weight:800}
+.team-title{font-family:var(--serif);font-size:clamp(2.6rem,4.8vw,4.4rem);line-height:.96;letter-spacing:-.035em;margin-top:8px;font-weight:400}
 .team-title span{display:block;color:#fff}
 .team-title small{display:block;margin-top:4px;font:inherit;color:var(--purple)}
 .team-copy{max-width:580px;color:rgba(247,242,255,.66);font-family:var(--mono);font-size:.9rem;line-height:1.75}
@@ -75,6 +75,11 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 .advisor-body{padding:28px}
 .advisor-body .team-description{min-height:0;margin-top:14px}
 .advisor-body .team-description + .team-description{margin-top:12px}
+.supporter-section{margin-bottom:68px}
+.supporter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.supporter-card{min-height:230px;padding:24px;border:1px solid rgba(183,148,255,.15);border-radius:6px;background:linear-gradient(180deg,rgba(20,13,31,.78),rgba(8,6,13,.84));transition:transform .25s ease,border-color .25s ease,background .25s ease;animation:softEnter .52s ease both}
+.supporter-card:hover{transform:translateY(-5px);border-color:rgba(166,108,255,.44);background:linear-gradient(180deg,rgba(28,17,44,.9),rgba(9,6,15,.9))}
+.supporter-card .team-description{min-height:0;margin-top:14px}
 .team-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .team-card{position:relative;min-height:350px;border:1px solid rgba(183,148,255,.15);border-radius:6px;background:linear-gradient(180deg,rgba(20,13,31,.82),rgba(8,6,13,.86));overflow:hidden;transition:transform .25s ease,border-color .25s ease,background .25s ease;animation:softEnter .52s ease both;animation-delay:calc(var(--i) * 38ms)}
 .team-card:hover{transform:translateY(-6px);border-color:rgba(166,108,255,.46);background:linear-gradient(180deg,rgba(28,17,44,.9),rgba(9,6,15,.9))}
@@ -96,8 +101,8 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 @keyframes pageFade{0%{opacity:0;background:#020104}100%{opacity:1;background:var(--bg)}}
 @keyframes softEnter{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-@media(max-width:1180px){.team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.advisor-grid{grid-template-columns:1fr}.team-hero{grid-template-columns:1fr}}
-@media(max-width:760px){.v6-nav{height:76px;padding:0 22px}.v6-logo img{height:38px}.nav-links,.nav-socials{display:none}.mobile-menu-btn{display:grid;width:42px;height:42px}.team-page{padding:112px 22px 78px}.team-grid{grid-template-columns:1fr}.advisor-card{grid-template-columns:1fr}.advisor-image{min-height:230px;border-right:0;border-bottom:1px solid rgba(247,242,255,.09)}.section-row{display:block}.team-card{min-height:auto}.team-actions{display:grid;grid-template-columns:repeat(2,44px)}.v6-footer{padding:32px 22px;flex-direction:column;text-align:center}}
+@media(max-width:1180px){.team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.advisor-grid{grid-template-columns:1fr}.supporter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-hero{grid-template-columns:1fr}}
+@media(max-width:760px){.v6-nav{height:76px;padding:0 22px}.v6-logo img{height:38px}.nav-links,.nav-socials{display:none}.mobile-menu-btn{display:grid;width:42px;height:42px}.mobile-drawer{padding:26px 22px 34px}.mobile-drawer nav a{min-height:56px;font-size:.92rem}.mobile-socials{display:grid;grid-template-columns:repeat(2,1fr)}.team-page{padding:104px 20px 72px}.team-page::after{display:none}.team-hero{gap:18px;margin-bottom:42px;padding-bottom:26px}.team-title{font-size:clamp(2.35rem,13vw,3.3rem)}.team-copy{font-size:.8rem;line-height:1.65}.team-grid,.supporter-grid{grid-template-columns:1fr;gap:14px}.advisor-grid{gap:14px}.advisor-card{grid-template-columns:1fr;min-height:auto}.advisor-image{min-height:220px;border-right:0;border-bottom:1px solid rgba(247,242,255,.09)}.advisor-body{padding:22px}.section-row{display:block;margin-bottom:20px}.section-title{font-size:clamp(2.1rem,12vw,3rem)}.supporter-section,.advisor-section{margin-bottom:54px}.supporter-card{min-height:auto;padding:22px}.team-card{min-height:auto}.team-image{height:176px}.team-image img{width:122px;height:122px;margin-bottom:24px}.team-body{padding:20px}.team-role{font-size:.62rem}.team-name{font-size:1.46rem}.team-description{min-height:0;font-size:.82rem}.team-actions{display:grid;grid-template-columns:repeat(2,44px)}.v6-footer{padding:32px 22px;flex-direction:column;align-items:flex-start;text-align:left}}
 </style>
 </head>
 <body>
@@ -193,6 +198,40 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
           </article>
         </div>
       </section>
+      <section class="supporter-section">
+        <div class="section-row">
+          <div>
+            <div class="section-label">Supporting Faculty</div>
+            <h2 class="section-title">Faculty Supporters &amp; Honorary Mentors.</h2>
+          </div>
+        </div>
+        <div class="supporter-grid">
+          <article class="supporter-card">
+            <div class="team-role">Past Advisor</div>
+            <h3 class="team-name">Mutsumi Nakamura</h3>
+            <p class="team-description">Retired professor and former WiCS advisor whose support helped shape the organization.</p>
+            <a class="team-link" href="https://search.asu.edu/profile/262996" target="_blank">View Profile -></a>
+          </article>
+          <article class="supporter-card">
+            <div class="team-role">Frequent Supporter</div>
+            <h3 class="team-name">Ross Maciejewski</h3>
+            <p class="team-description">SCAI director and frequent supporter of WiCS events, meetings, and community initiatives.</p>
+            <a class="team-link" href="https://search.asu.edu/profile/1783228" target="_blank">View Profile -></a>
+          </article>
+          <article class="supporter-card">
+            <div class="team-role">Frequent Supporter</div>
+            <h3 class="team-name">Andrea Richa</h3>
+            <p class="team-description">Professor and longtime supporter who continues to show up for major WiCS gatherings.</p>
+            <a class="team-link" href="https://search.asu.edu/profile/198256" target="_blank">View Profile -></a>
+          </article>
+          <article class="supporter-card">
+            <div class="team-role">Frequent Supporter</div>
+            <h3 class="team-name">Srividya Bansal</h3>
+            <p class="team-description">Professor and frequent supporter of WiCS programming, big meetings, and student community.</p>
+            <a class="team-link" href="https://search.asu.edu/profile/1629159" target="_blank">View Profile -></a>
+          </article>
+        </div>
+      </section>
       <div class="section-row">
         <div>
           <div class="section-label">Officer Board</div>
@@ -210,18 +249,18 @@ body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
 <script>
 const TEAM_MEMBERS = [
   { role: 'President', name: 'Neha Kanjamala', image: 'images/team/neha-kanjamala.jpg', email: 'nkanjama@asu.edu', linkedin: 'https://www.linkedin.com/in/neha-kanjamala' },
-  { role: 'Co-president', name: 'Riya Nalla', email: 'rsnalla@asu.edu', linkedin: 'https://www.linkedin.com/in/riya-nalla' },
+  { role: 'Co-president', name: 'Riya Nalla', image: 'images/team/riya-nalla.jpg', email: 'rsnalla@asu.edu', linkedin: 'https://www.linkedin.com/in/riya-nalla' },
   { role: 'Treasurer', name: 'Hansika Peethala', image: 'images/team/Hansika-Peethala.jpeg', email: 'hpeethal@asu.edu', linkedin: 'https://www.linkedin.com/in/hansika-peethala/' },
-  { role: 'VP of Industry Relations', name: 'Poojitha Nuthalapati', email: 'pnuthal1@asu.edu' },
+  { role: 'VP of Industry Relations', name: 'Poojitha Nuthalapati', email: 'pnuthal1@asu.edu', linkedin: 'https://www.linkedin.com/in/poojithanuthalapati/' },
   { role: 'VP of Outreach', name: 'Jahaira Flores', email: 'jflor108@asu.edu' },
-  { role: 'Logistics Director', name: 'Supraja Sreevatsan', email: 'ssreevat@asu.edu' },
-  { role: 'Campus Relations Director (Undergraduate)', name: 'Sanjita Patwardhan', email: 'spatwar5@asu.edu' },
+  { role: 'Logistics Director', name: 'Supraja Sreevatsan', image: 'images/team/Supraja-Sreevatsan.jpeg', email: 'ssreevat@asu.edu', linkedin: 'https://www.linkedin.com/in/supraja-sreevatsan-277425365' },
+  { role: 'Campus Relations Director (Undergraduate)', name: 'Sanjita Patwardhan', image: 'images/team/sanjita-patwardhan.jpeg', email: 'spatwar5@asu.edu', linkedin: 'https://www.linkedin.com/in/sanjita-patwardhan-69a28a26a/' },
   { role: 'Campus Relations Director (Graduate)', name: 'Dhriti Girish', image: 'images/team/Dhriti-Girish.jpg', email: 'dgirish3@asu.edu', linkedin: 'https://www.linkedin.com/in/dhriti-g/' },
-  { role: 'Director of Professional Development', name: 'Sumedha Gupta', email: 'sgupt354@asu.edu' },
-  { role: 'Mentorship Program Director', name: 'Tiya Lath', email: 'tlath@asu.edu' },
+  { role: 'Director of Professional Development', name: 'Sumedha Gupta', image: 'images/team/sumedha_gupta.jpeg', email: 'sgupt354@asu.edu', linkedin: 'https://www.linkedin.com/in/sumedha092' },
+  { role: 'Mentorship Program Director', name: 'Tiya Lath', image: 'images/team/tiya-lath.png', email: 'tlath@asu.edu', linkedin: 'https://www.linkedin.com/in/tiya-lath' },
   { role: 'Co-mentorship Director', name: 'Vallari Tripathi', email: 'vtripat8@asu.edu' },
   { role: 'Marketing Director', name: 'Kendra Montes', email: 'kmontes4@asu.edu' },
-  { role: 'Marketing Officer', name: 'Anchana Selvaganabathy', email: 'aselvag1@asu.edu' },
+  { role: 'Marketing Officer', name: 'Anchana Selvaganabathy', image: 'images/team/anchana-selvaganabathy.jpeg', email: 'aselvag1@asu.edu', linkedin: 'https://www.linkedin.com/in/anchana-selvaganabathy' },
   { role: 'Graphic Designer', name: 'Ananya Jalote', image: 'images/team/ananya-jalote.jpg', email: 'ajalote4@asu.edu', linkedin: 'https://www.linkedin.com/in/ananyajalote/' },
   { role: 'Webmaster', name: 'Deepti Ravi Kumar', image: 'images/team/deepti-ravi-kumar.png', email: 'draviku8@asu.edu', linkedin: 'https://www.linkedin.com/in/deepti-ravi-kumar/' }
 ];
