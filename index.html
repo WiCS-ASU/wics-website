@@ -86,10 +86,9 @@ body{animation:pageFade .7s ease both}
 
 .hero-copy{position:relative;z-index:3;max-width:660px}
 .eyebrow{font-family:var(--mono);font-size:1.72rem;font-weight:400;letter-spacing:.075em;text-transform:uppercase;color:#fff;margin-bottom:12px}
-.hero-title{font-family:Inter,Arial,Helvetica,sans-serif;font-size:clamp(5.6rem,7.7vw,7.65rem);line-height:.89;letter-spacing:-.062em;font-weight:800}
+.hero-title{font-family:var(--serif);font-size:clamp(5.6rem,7.7vw,7.65rem);line-height:.89;letter-spacing:-.035em;font-weight:400}
 .hero-title span{display:block}
-.hero-title .type-line{display:inline-block;max-width:0;overflow:hidden;white-space:nowrap;color:#fff;animation:typeHeroWord .86s steps(5,end) .26s both}
-.hero-title .type-line::after{content:'';display:inline-block;width:3px;height:.82em;margin-left:10px;background:var(--purple-3);vertical-align:-.06em;animation:caretBlink .8s steps(2,end) .2s 3 both,caretFade .32s ease 1.65s both}
+.hero-title .type-line{display:block;color:#fff}
 .hero-title .purple{color:var(--purple)}
 .hero-title .mono{display:flex;align-items:flex-end;gap:.52em;margin-top:4px;font-family:"Courier New",var(--mono),monospace;font-style:italic;font-weight:400;letter-spacing:.01em;color:#fff;font-size:.58em;line-height:1.05}
 .hero-title .mono em,.hero-title .mono strong{font:inherit}
@@ -118,15 +117,10 @@ body{animation:pageFade .7s ease both}
 .stat-icon svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .stat-icon.fill svg{fill:currentColor;stroke:none}
 .stat b{display:block;font-family:var(--mono);font-size:2.08rem;font-weight:500;color:#fff;line-height:1;letter-spacing:-.04em}
-.stat span{display:block;margin-top:8px;font-family:var(--mono);font-size:.72rem;color:var(--purple-3);letter-spacing:.08em;text-transform:uppercase}
+.stat span{display:block;max-width:230px;margin-top:8px;font-family:var(--mono);font-size:.72rem;line-height:1.35;color:var(--purple-3);letter-spacing:.08em;text-transform:uppercase}
 .code-note{position:absolute;right:42px;bottom:92px;font-family:var(--mono);font-size:.76rem;line-height:1.6;color:rgba(123,34,230,.8)}
-.eyebrow{animation:softEnter .5s ease .08s both}
-.hero-title .purple{animation:softTextIn .52s ease .86s both}
-.hero-title .mono{animation:softTextIn .52s ease 1.04s both}
-.hero-sub{animation:softEnter .52s ease 1.18s both}
-.hero-actions{animation:softEnter .52s ease 1.3s both}
-.butterfly-wrap{animation:softMothIn .78s ease .42s both}
-.stats{animation:softEnter .62s ease 1.38s both}
+.hero-copy{animation:heroSettle .42s ease .06s both}
+.stats{animation:heroSettle .42s ease .12s both}
 
 .gallery-section{position:relative;padding:88px 52px 104px;background:#08050d}
 .gallery-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(183,148,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(183,148,255,.045) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(to bottom,black,transparent 92%)}
@@ -170,12 +164,7 @@ body{animation:pageFade .7s ease both}
 
 @keyframes sponsorScroll{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
 @keyframes pageFade{0%{opacity:0;background:#020104}100%{opacity:1;background:var(--bg)}}
-@keyframes softEnter{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes softTextIn{0%{opacity:0;transform:translateY(8px);filter:blur(5px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
-@keyframes softMothIn{0%{opacity:0;transform:translateY(18px) scale(.985);filter:blur(8px)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-@keyframes typeHeroWord{0%{max-width:0;filter:blur(2px)}100%{max-width:8ch;filter:blur(0)}}
-@keyframes caretBlink{0%,100%{opacity:0}50%{opacity:1}}
-@keyframes caretFade{to{opacity:0}}
+@keyframes heroSettle{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -192,23 +181,36 @@ body{animation:pageFade .7s ease both}
   .nav-links,.nav-socials{display:none}
   .mobile-menu-btn{display:grid}
   .mobile-menu-btn{width:42px;height:42px}
-  .hero{min-height:auto;padding:102px 22px 44px}
+  .mobile-drawer{padding:26px 22px 34px}
+  .mobile-drawer nav a{min-height:56px;font-size:.92rem}
+  .mobile-socials{display:grid;grid-template-columns:repeat(2,1fr)}
+  .hero{min-height:auto;padding:100px 20px 42px}
   .hero-inner{gap:0}
   .hero-copy{width:100%}
-  .eyebrow{font-size:1.48rem;margin-bottom:10px}
-  .hero-title{max-width:100%;font-size:clamp(2.55rem,13.3vw,4.15rem);line-height:.96;letter-spacing:-.044em}
-  .hero-title .purple{display:block;white-space:nowrap}
-  .hero-title .mono{gap:.34em;margin-top:2px;font-size:.53em}
-  .hero-title .mono strong::before{width:min(70vw,350px);bottom:-7px}
-  .hero-title .mono strong::after{width:min(58vw,310px);left:24px;bottom:-15px}
-  .hero-sub{max-width:100%;margin-top:30px;font-size:.78rem;line-height:1.65}
-  .hero-actions{margin-top:28px}
-  .btn{width:100%;min-height:58px;padding-inline:24px}
+  .eyebrow{font-size:1.12rem;margin-bottom:9px;letter-spacing:.11em}
+  .hero-title{max-width:100%;font-size:clamp(2.7rem,14vw,3.82rem);line-height:.95;letter-spacing:-.048em}
+  .hero-title .purple{display:block;white-space:normal}
+  .hero-title .mono{gap:.3em;margin-top:4px;font-size:.5em;line-height:1.18}
+  .hero-title .mono strong::before{width:min(56vw,220px);height:2px;bottom:-6px}
+  .hero-title .mono strong::after{width:min(47vw,190px);height:2px;left:18px;bottom:-13px}
+  .hero-sub{max-width:100%;margin-top:28px;font-size:.76rem;line-height:1.6}
+  .hero-actions{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+  .btn{width:100%;min-height:54px;padding-inline:22px;font-size:.78rem}
   .butterfly-wrap{display:none}
   .moth-bg{width:min(330px,96vw);transform:translate(10px,-6px);opacity:.82}
   .moth-bg::after{background:linear-gradient(rgba(28,9,52,.22),rgba(28,9,52,.22)),rgba(0,0,0,.24)}
-  .stats{grid-template-columns:1fr;margin-top:8px}.stat{border-right:0;border-bottom:1px solid rgba(247,242,255,.14)}.stat:last-child{border-bottom:0}
+  .stats{grid-template-columns:1fr;margin-top:18px;border-radius:8px;overflow:hidden}.stat{min-height:92px;justify-content:flex-start;padding:0 20px;border-right:0;border-bottom:1px solid rgba(247,242,255,.14);gap:18px}.stat:last-child{border-bottom:0}
+  .stat-icon{width:34px;height:34px}.stat b{font-size:1.72rem}.stat span{font-size:.64rem;line-height:1.4}
   .stat:not(:last-child)::after{display:none}
+  .gallery-section,.pillars-section{padding:58px 20px}
+  .section-title{font-size:clamp(2.25rem,13vw,3.35rem)}
+  .mosaic{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;aspect-ratio:auto;gap:5px;padding:5px;border-radius:10px}
+  .tile{aspect-ratio:1/1}
+  .pillars-grid{gap:12px;margin-top:34px}
+  .pillar{min-height:auto;padding:24px}
+  .sponsor-section{padding:34px 0}.sponsor-item{min-width:170px;height:88px;padding:0 34px}.sponsor-item img{height:58px;max-width:170px}
+  .sponsor-track-wrap::before,.sponsor-track-wrap::after{width:54px}
+  .v6-footer{align-items:flex-start;text-align:left;font-size:.72rem}
 }
 </style>
 </head>
@@ -264,7 +266,7 @@ body{animation:pageFade .7s ease both}
 
 <main>
   <section class="hero">
-    <div class="side-code"><span>WiCS</span><i></i><b></b><i></i><span>EST. 2018</span></div>
+    <div class="side-code"><span>WiCS</span><i></i><b></b><i></i><span>EST. 2003</span></div>
     <div class="corner-copy">Building the future through community, code, and curiosity.</div>
     <div class="spark"><span></span></div>
     <div class="hero-inner">
@@ -290,15 +292,15 @@ body{animation:pageFade .7s ease both}
     <div class="stats">
       <div class="stat">
         <div class="stat-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="16" cy="16" r="5"></circle><circle cx="32" cy="16" r="5"></circle><path d="M7 37c1.2-7 5-11 9-11s7.8 4 9 11"></path><path d="M23 37c1.2-7 5-11 9-11s7.8 4 9 11"></path></svg></div>
-        <div><b>500+</b><span>Builders</span></div>
+        <div><b>10,000+</b><span>Student members and alumni</span></div>
       </div>
       <div class="stat">
         <div class="stat-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 35 21 23l8 8 12-18"></path><path d="M32 13h9v9"></path><path d="M9 39c7-1 13-1 20 1"></path></svg></div>
-        <div><b>9</b><span>Sponsors</span></div>
+        <div><b>50+</b><span>Sponsors</span></div>
       </div>
       <div class="stat">
         <div class="stat-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5v38"></path><path d="M5 24h38"></path><path d="M10.5 10.5 37.5 37.5"></path><path d="M37.5 10.5 10.5 37.5"></path></svg></div>
-        <div><b>10+</b><span>Events</span></div>
+        <div><b>50+</b><span>Events annually</span></div>
       </div>
     </div>
     <div class="code-note">if (she.belongs())<br>{ the.future = hers; }</div>
