@@ -90,3 +90,81 @@ npx vercel deploy . --prod -y
 - Make sure new image paths are relative and case-correct.
 - Do not commit `.DS_Store`, `.vercel/`, raw unused logo files, or private environment files.
 - Keep secrets, tokens, calendar credentials, and API keys out of the repo.
+
+## Editing Content
+
+### Landing Page
+
+Edit `index.html`.
+
+- Hero copy, stats, feature pillars, and sponsor band markup live in the HTML body.
+- The community mosaic uses images from `images/home-page-images/hero-photos/`.
+- The sponsor band appears near the bottom of the page and is duplicated once for continuous scrolling. If you add, remove, or reorder sponsors, update both sponsor sets so the loop stays seamless.
+
+### Events Page
+
+Edit `events.html`.
+
+- Calendar/event data is stored in page JavaScript near the bottom of the file.
+- Event detail cards include title, date, description, image, registration link, and add-to-calendar behavior.
+- Recurring event cards use images from `images/events/`.
+- Completed events should not keep active registration or add-to-calendar actions.
+- If the calendar later connects to Google Calendar, keep public event display separate from any private credentials or API keys.
+
+### Team Page
+
+Edit `team.html`.
+
+- Faculty advisor and supporter cards are written directly in the HTML.
+- Officer cards are generated from the `TEAM_MEMBERS` array near the bottom of the file.
+- Team photos live in `images/team/`.
+- Use `images/team/blank-profile-circle.png` for missing photos.
+- Officer links should use full `https://` URLs when possible so they work consistently after deployment.
+
+### Sponsors Page
+
+Edit `sponsors.html`.
+
+- Sponsor cards are grouped by tier in the order shown on the page.
+- Use labels like `Silver`, `Bronze`, `Tech Talk`, or `Involved`.
+- Sponsor logos live in `images/sponsors/`.
+- Prefer transparent PNG or SVG logos. If a logo has a white or checkerboard background baked in, create/use a cleaned transparent version and reference that from the page.
+
+## Asset Guidelines
+
+- Use lowercase, hyphenated filenames when adding new assets, for example `poojitha-nuthalapati.jpeg`.
+- Keep images in the folder that matches their purpose:
+  - `images/branding/` for WiCS logo and moth artwork.
+  - `images/home-page-images/hero-photos/` for homepage mosaic photos.
+  - `images/events/` for recurring event and past-event images.
+  - `images/team/` for advisor, supporter, and officer photos.
+  - `images/sponsors/` for company logos.
+- Compress large photos before committing when possible.
+- Do not commit duplicate raw files when only the cleaned/display-ready version is used.
+
+## Common Tasks
+
+Add an officer:
+
+1. Add the officer image to `images/team/`.
+2. Add or update the member object in `TEAM_MEMBERS` inside `team.html`.
+3. Include `name`, `role`, `image`, `email`, and `linkedin` when available.
+
+Add a recurring event card:
+
+1. Add the image to `images/events/`.
+2. Update the recurring event card data or markup in `events.html`.
+3. Keep the description short and specific.
+
+Add a sponsor:
+
+1. Add the logo to `images/sponsors/`.
+2. Add the sponsor to `sponsors.html` under the correct tier.
+3. Add it to both sponsor-band sets in `index.html`.
+4. Confirm it is visible on dark backgrounds and does not show a boxed background.
+
+## Known Follow-Ups
+
+- The calendar currently uses page-defined event data. If the team wants live calendar syncing, connect it to the public WiCS calendar feed without committing private credentials.
+- Shared CSS is duplicated across pages. If the site grows, consider moving common styles into a shared stylesheet.
+- Raw sponsor logo files with backgrounds may exist locally during cleanup; only display-ready assets should be committed.
