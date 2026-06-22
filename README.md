@@ -1,4 +1,4 @@
-# WiCS Website
+# WiCS Website 
 
 Static website for Women in Computer Science at ASU. The site is intentionally simple: plain HTML files with page-local CSS and JavaScript, plus organized image assets. There is no build step, framework, package install, or backend required to preview the current version.
 
