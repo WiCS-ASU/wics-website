@@ -10,6 +10,7 @@ Static website for Women in Computer Science at ASU. The site is intentionally s
 |-- events.html
 |-- team.html
 |-- sponsors.html
+|-- firebase.json
 |-- images/
 |   |-- branding/
 |   |-- events/
@@ -67,28 +68,40 @@ Opening an HTML file directly with `file://` can work for quick checks, but a lo
 
 ## Deployment
 
-The current site is static and can be deployed directly through Vercel. There is no build command.
+The current site is static and can be deployed on the Firebase Hosting free tier. There is no build command.
 
-Preview deploy:
-
-```bash
-npx vercel deploy . -y
-```
-
-Production deploy, only when the team is ready:
+Install Firebase CLI once:
 
 ```bash
-npx vercel deploy . --prod -y
+npm install -g firebase-tools
 ```
 
-`.vercel/` is intentionally ignored so local Vercel project metadata and deployment settings do not get committed.
+Log in:
+
+```bash
+firebase login
+```
+
+Connect this local folder to the team's Firebase project:
+
+```bash
+firebase use --add
+```
+
+Deploy when the local version is reviewed and ready:
+
+```bash
+firebase deploy --only hosting
+```
+
+`firebase.json` is committed because it describes how Firebase Hosting should serve the static site. `.firebase/` is intentionally ignored because it contains local deployment cache files. Do not commit Firebase service account files, tokens, private keys, or environment files.
 
 ## Pre-Push Checklist
 
 - Confirm changed pages load locally.
 - Check mobile navigation on pages touched by nav or layout edits.
 - Make sure new image paths are relative and case-correct.
-- Do not commit `.DS_Store`, `.vercel/`, raw unused logo files, or private environment files.
+- Do not commit `.DS_Store`, `.firebase/`, raw unused logo files, or private environment files.
 - Keep secrets, tokens, calendar credentials, and API keys out of the repo.
 
 ## Editing Content
