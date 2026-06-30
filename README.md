@@ -1,6 +1,14 @@
-# WiCS Website 
+# WiCS Website
 
 Static website for Women in Computer Science at ASU. The site is intentionally simple: plain HTML files with page-local CSS and JavaScript, plus organized image assets. There is no build step, framework, package install, or backend required to preview the current version.
+
+## Live Site
+
+- Firebase Hosting: `https://wics-asu.web.app`
+- Production source branch: `main`
+- Primary deployment config: `firebase.json`
+
+This repository currently serves as the deployment-ready source for the redesigned WiCS website. Keep the public site, GitHub source, and Firebase project aligned when making production changes.
 
 ## Project Map
 
@@ -27,6 +35,13 @@ Static website for Women in Computer Science at ASU. The site is intentionally s
 - `events.html`: monthly event calendar, event detail panel, recurring event cards, and past-event references.
 - `team.html`: faculty advisors, honorary faculty supporters, and officer board cards.
 - `sponsors.html`: sponsor logo page with tiers and involved partners.
+
+## Tech Stack
+
+- HTML, CSS, and vanilla JavaScript
+- Firebase Hosting for deployment
+- Google Fonts for typography
+- Static image assets organized by page or content type
 
 ## Shared Patterns
 
