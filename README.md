@@ -127,6 +127,14 @@ firebase deploy --only hosting
 
 `firebase.json` is committed because it describes how Firebase Hosting should serve the static site. `.firebase/` is intentionally ignored because it contains local deployment cache files. Do not commit Firebase service account files, tokens, private keys, or environment files.
 
+### Firebase Notes
+
+- The committed `.firebaserc` points to the Firebase project alias used for this site.
+- `firebase.json` deploys from the project root because the site has no build output folder.
+- The ignore list in `firebase.json` intentionally excludes `.git/`, `.firebase/`, `.vercel/`, logs, and private env files. Do not remove those exclusions.
+- If deploy output says Firebase found hundreds of files, stop and inspect `firebase.json`; it may be trying to upload repo internals.
+- A healthy deploy should upload only the changed site files and then print the Hosting URL.
+
 ## Pre-Push Checklist
 
 - Confirm changed pages load locally.
