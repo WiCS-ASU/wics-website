@@ -71,6 +71,16 @@ Then open the matching localhost URL, such as `http://localhost:8090`.
 
 Opening an HTML file directly with `file://` can work for quick checks, but a local server is preferred because it matches deployment behavior more closely.
 
+### Recommended Local Check
+
+Before sharing or deploying a change, open the affected page through localhost and check:
+
+- Desktop width around `1440px`.
+- Tablet/mobile width around `390px` to `430px`.
+- Navigation links and mobile drawer behavior.
+- Image paths, especially new team, event, and sponsor assets.
+- Hover states for sponsor logos and buttons.
+
 ## Development Flow
 
 1. Pull the latest `main`.
@@ -80,6 +90,12 @@ Opening an HTML file directly with `file://` can work for quick checks, but a lo
 5. Check related pages when editing shared pieces such as nav, footer, colors, sponsor styling, or mobile drawer behavior.
 6. Commit related changes together with a clear message.
 7. Deploy only after the local version is reviewed and ready.
+
+Suggested commit style:
+
+- Keep content updates, asset updates, and deployment config changes separate when possible.
+- Use short messages that describe the outcome, for example `Update sponsor logo treatment`.
+- Confirm `git status --short` is clean after committing and deploying.
 
 ## Deployment
 
