@@ -194,6 +194,14 @@ Edit `sponsors.html`.
 - Compress large photos before committing when possible.
 - Do not commit duplicate raw files when only the cleaned/display-ready version is used.
 
+## Maintainer Handoff Notes
+
+- Keep officer names, roles, emails, LinkedIn links, and photos updated in `team.html`.
+- Keep sponsor tiers and sponsor logo files updated together in `sponsors.html` and the homepage sponsor band.
+- Keep event descriptions short and evergreen unless a date-specific event is intentionally being promoted.
+- When a new webmaster takes over, walk them through local preview, Git commits, Firebase login, and one test deploy before handing off fully.
+- Store private planning docs, Drive links, credentials, and internal notes outside this public repo.
+
 ## Common Tasks
 
 Add an officer:
@@ -220,3 +228,4 @@ Add a sponsor:
 - The calendar currently uses page-defined event data. If the team wants live calendar syncing, connect it to the public WiCS calendar feed without committing private credentials.
 - Shared CSS is duplicated across pages. If the site grows, consider moving common styles into a shared stylesheet.
 - Raw sponsor logo files with backgrounds may exist locally during cleanup; only display-ready assets should be committed.
+- If the team later reconnects `asuwics.org`, confirm the custom domain inside Firebase Hosting before changing DNS or deployment settings.
