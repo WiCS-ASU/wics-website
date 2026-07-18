@@ -1,25 +1,16 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "dist",
     "ignore": [
       "firebase.json",
-      "README.md",
-      ".firebaserc",
-      ".git",
-      ".git/**",
-      ".github",
-      ".github/**",
-      ".firebase",
-      ".firebase/**",
-      ".vercel",
-      ".vercel/**",
-      ".DS_Store",
-      "**/.DS_Store",
-      "firebase-debug.log",
-      "*.log",
-      ".env",
-      ".env.*",
+      "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ],
     "cleanUrls": true,
     "trailingSlash": false

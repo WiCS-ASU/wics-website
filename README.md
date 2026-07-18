@@ -1,6 +1,6 @@
 # WiCS Website
 
-Static website for Women in Computer Science at ASU. The site is intentionally simple: plain HTML files with page-local CSS and JavaScript, plus organized image assets. There is no build step, framework, package install, or backend required to preview the current version.
+React/Vite website for Women in Computer Science at ASU. The current React shell preserves the approved static redesign while making the project easier to align with the official WiCS React/Firebase workflow.
 
 ## Live Site
 
@@ -19,6 +19,12 @@ This repository currently serves as the deployment-ready source for the redesign
 |-- team.html
 |-- sponsors.html
 |-- firebase.json
+|-- package.json
+|-- vite.config.js
+|-- legacy-static/
+|-- public/
+|   |-- faviconwics.ico
+|   `-- images/
 |-- images/
 |   |-- branding/
 |   |-- events/
@@ -26,50 +32,59 @@ This repository currently serves as the deployment-ready source for the redesign
 |   |   `-- hero-photos/
 |   |-- sponsors/
 |   `-- team/
+|-- scripts/
+|   `-- generate-pages.mjs
+|-- src/
+|   |-- App.jsx
+|   |-- generatedPages.js
+|   `-- main.jsx
 `-- README.md
 ```
 
 ## Pages
 
-- `index.html`: landing page, moth hero, community photo mosaic, feature pillars, and scrolling sponsor band.
-- `events.html`: monthly event calendar, event detail panel, recurring event cards, and past-event references.
-- `team.html`: faculty advisors, honorary faculty supporters, and officer board cards.
-- `sponsors.html`: sponsor logo page with tiers and involved partners.
+- `/`: landing page, moth hero, community photo mosaic, feature pillars, and scrolling sponsor band.
+- `/events`: monthly event calendar, event detail panel, recurring event cards, and past-event references.
+- `/team`: faculty advisors, honorary faculty supporters, and officer board cards.
+- `/sponsors`: sponsor logo page with tiers and involved partners.
 
 ## Tech Stack
 
-- HTML, CSS, and vanilla JavaScript
+- React, Vite, HTML, CSS, and JavaScript
 - Firebase Hosting for deployment
 - Google Fonts for typography
 - Static image assets organized by page or content type
 
 ## Shared Patterns
 
-- Each page is standalone and includes its own `<style>` block. When changing a shared pattern like nav, mobile menu, colors, or footer, update each page that uses that pattern.
-- Core visual tokens live near the top of each page in `:root`: `--bg`, `--ink`, `--purple`, `--purple-2`, `--purple-3`, `--mono`, `--serif`, and `--sans`.
-- The navigation is repeated across all pages. Keep active links page-specific by applying `class="active"` only to the current page's nav link.
+- The React shell currently generates page content from the approved static files in `legacy-static/`.
+- Each legacy page includes its own `<style>` block. When changing a shared pattern like nav, mobile menu, colors, or footer, update each legacy source page that uses that pattern.
+- Core visual tokens live near the top of each legacy page in `:root`: `--bg`, `--ink`, `--purple`, `--purple-2`, `--purple-3`, `--mono`, `--serif`, and `--sans`.
+- The navigation is repeated across pages. Keep active links page-specific by applying `class="active"` only to the current page's nav link.
 - Mobile support is CSS-only. The hamburger menu uses a hidden checkbox plus labels, so it works without JavaScript.
 - The site uses external Google Fonts: `DM Serif Display`, `Instrument Sans`, and `Geist Mono`.
 
 ## Local Preview
 
-Run a simple static server from the project root:
+Install dependencies:
 
 ```bash
-python3 -m http.server 8080
+npm install
 ```
 
-Then open `http://localhost:8080`.
-
-If that port is busy, choose another one:
+Start the React development server:
 
 ```bash
-python3 -m http.server 8090
+npm start
 ```
 
-Then open the matching localhost URL, such as `http://localhost:8090`.
+Then open the localhost URL printed by Vite.
 
-Opening an HTML file directly with `file://` can work for quick checks, but a local server is preferred because it matches deployment behavior more closely.
+Build before deployment:
+
+```bash
+npm run build
+```
 
 ### Recommended Local Check
 
@@ -99,7 +114,7 @@ Suggested commit style:
 
 ## Deployment
 
-The current site is static and can be deployed on the Firebase Hosting free tier. There is no build command.
+The current site builds through Vite and deploys the generated `dist/` folder to Firebase Hosting.
 
 Install Firebase CLI once:
 
@@ -122,15 +137,16 @@ firebase use --add
 Deploy when the local version is reviewed and ready:
 
 ```bash
+npm run build
 firebase deploy --only hosting
 ```
 
-`firebase.json` is committed because it describes how Firebase Hosting should serve the static site. `.firebase/` is intentionally ignored because it contains local deployment cache files. Do not commit Firebase service account files, tokens, private keys, or environment files.
+`firebase.json` is committed because it describes how Firebase Hosting should serve the built React site. `.firebase/` is intentionally ignored because it contains local deployment cache files. Do not commit Firebase service account files, tokens, private keys, or environment files.
 
 ### Firebase Notes
 
 - The committed `.firebaserc` points to the Firebase project alias used for this site.
-- `firebase.json` deploys from the project root because the site has no build output folder.
+- `firebase.json` deploys from `dist/`, which is generated by `npm run build`.
 - The ignore list in `firebase.json` intentionally excludes `.git/`, `.firebase/`, `.vercel/`, logs, and private env files. Do not remove those exclusions.
 - If deploy output says Firebase found hundreds of files, stop and inspect `firebase.json`; it may be trying to upload repo internals.
 - A healthy deploy should upload only the changed site files and then print the Hosting URL.
@@ -147,7 +163,7 @@ firebase deploy --only hosting
 
 ### Landing Page
 
-Edit `index.html`.
+Edit `legacy-static/index.html`, then run `npm run build` or `node scripts/generate-pages.mjs`.
 
 - Hero copy, stats, feature pillars, and sponsor band markup live in the HTML body.
 - The community mosaic uses images from `images/home-page-images/hero-photos/`.
@@ -155,7 +171,7 @@ Edit `index.html`.
 
 ### Events Page
 
-Edit `events.html`.
+Edit `legacy-static/events.html`, then run `npm run build` or `node scripts/generate-pages.mjs`.
 
 - Calendar/event data is stored in page JavaScript near the bottom of the file.
 - Event detail cards include title, date, description, image, registration link, and add-to-calendar behavior.
@@ -165,7 +181,7 @@ Edit `events.html`.
 
 ### Team Page
 
-Edit `team.html`.
+Edit `legacy-static/team.html`, then run `npm run build` or `node scripts/generate-pages.mjs`.
 
 - Faculty advisor and supporter cards are written directly in the HTML.
 - Officer cards are generated from the `TEAM_MEMBERS` array near the bottom of the file.
@@ -175,7 +191,7 @@ Edit `team.html`.
 
 ### Sponsors Page
 
-Edit `sponsors.html`.
+Edit `legacy-static/sponsors.html`, then run `npm run build` or `node scripts/generate-pages.mjs`.
 
 - Sponsor cards are grouped by tier in the order shown on the page.
 - Use labels like `Silver`, `Bronze`, `Tech Talk`, or `Involved`.
@@ -196,8 +212,8 @@ Edit `sponsors.html`.
 
 ## Maintainer Handoff Notes
 
-- Keep officer names, roles, emails, LinkedIn links, and photos updated in `team.html`.
-- Keep sponsor tiers and sponsor logo files updated together in `sponsors.html` and the homepage sponsor band.
+- Keep officer names, roles, emails, LinkedIn links, and photos updated in `legacy-static/team.html`.
+- Keep sponsor tiers and sponsor logo files updated together in `legacy-static/sponsors.html` and the homepage sponsor band.
 - Keep event descriptions short and evergreen unless a date-specific event is intentionally being promoted.
 - When a new webmaster takes over, walk them through local preview, Git commits, Firebase login, and one test deploy before handing off fully.
 - Store private planning docs, Drive links, credentials, and internal notes outside this public repo.
@@ -207,20 +223,20 @@ Edit `sponsors.html`.
 Add an officer:
 
 1. Add the officer image to `images/team/`.
-2. Add or update the member object in `TEAM_MEMBERS` inside `team.html`.
+2. Add or update the member object in `TEAM_MEMBERS` inside `legacy-static/team.html`.
 3. Include `name`, `role`, `image`, `email`, and `linkedin` when available.
 
 Add a recurring event card:
 
 1. Add the image to `images/events/`.
-2. Update the recurring event card data or markup in `events.html`.
+2. Update the recurring event card data or markup in `legacy-static/events.html`.
 3. Keep the description short and specific.
 
 Add a sponsor:
 
 1. Add the logo to `images/sponsors/`.
-2. Add the sponsor to `sponsors.html` under the correct tier.
-3. Add it to both sponsor-band sets in `index.html`.
+2. Add the sponsor to `legacy-static/sponsors.html` under the correct tier.
+3. Add it to both sponsor-band sets in `legacy-static/index.html`.
 4. Confirm it is visible on dark backgrounds and does not show a boxed background.
 
 ## Known Follow-Ups
